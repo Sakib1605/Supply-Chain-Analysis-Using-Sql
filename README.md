@@ -38,7 +38,7 @@ Analysis: Counts the number of times each product type experiences a stockout an
 
 Insights: Focus on maintaining adequate inventory for frequently out-of-stock products to prevent disruptions and lost sales.
 
-### **Product Lifecycle: Which products show declining/increasing demand over time?**
+### **Product Demand: Which products show declining/increasing demand over time?**
 
 **Objective:** 
 Determine trends in product demand over time to support strategic inventory and production decisions.
