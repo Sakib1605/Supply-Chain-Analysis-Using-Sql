@@ -14,7 +14,7 @@ The dataset, `supply_chain_data`, was analyzed using SQL queries to address spec
 ## Business Questions and Analysis
 
 
-### **8. Product Lifecycle: Which products show declining/increasing demand over time?**
+### **. Product Lifecycle: Which products show declining/increasing demand over time?**
 
 **Objective:** 
 Determine trends in product demand over time to support strategic inventory and production decisions.
@@ -64,11 +64,62 @@ ORDER BY
     Product_type, OrderYear, OrderMonth;
 
 ```
-Analysis: This query tracks monthly demand changes and categorizes trends as increasing, declining, or stable, highlighting shifts in market demand.
+**Analysis:** This query tracks monthly demand changes and categorizes trends as increasing, declining, or stable, highlighting shifts in market demand.
 
-Insights: Focus on products with increasing demand to scale efforts, address declining demand to mitigate losses, and ensure consistent availability of stable products.
+**Insights:** Focus on products with increasing demand to scale efforts, address declining demand to mitigate losses, and ensure consistent availability of stable products.
 
-### **1. Supplier Performance: Which suppliers consistently meet lead times?**
+
+### **9. Profitability Analysis: Which products have the highest revenue but low profit margins?**
+
+**Objective:** 
+Identify high-revenue products with low profit margins to improve pricing strategies and cost management.
+
+**SQL Query:**
+```sql
+SELECT 
+    Product_type,
+    SUM(Revenue_generated) AS TotalRevenue,
+    SUM(Manufacturing_costs + Shipping_costs) AS TotalCosts,
+    SUM(Revenue_generated - (Manufacturing_costs + Shipping_costs)) AS TotalProfit,
+    ROUND(SUM(Revenue_generated - (Manufacturing_costs + Shipping_costs)) * 100.0 / NULLIF(SUM(Revenue_generated), 0), 2) AS ProfitMargin
+FROM 
+    supply_chain_data
+GROUP BY 
+    Product_type
+ORDER BY 
+    ProfitMargin ASC, TotalRevenue DESC;
+```
+
+Analysis: This query calculates total revenue, total costs, and profit margins for each product type, sorting by low profit margins to identify products with high revenue but suboptimal profitability.
+
+**Insights:** High-revenue, low-margin products indicate potential areas for cost optimization, pricing adjustments, or process improvement to enhance profitability.
+
+
+### **10. High Demand Regions: Which locations consistently order high volumes of products?**
+
+**Objective:** 
+Identify regions with high demand for specific products to prioritize inventory distribution and marketing efforts.
+
+**SQL Query:**
+```sql
+SELECT 
+    Location,
+    Product_type,
+    SUM(Order_quantities) AS TotalUnitsOrdered,
+    ROUND(SUM(Order_quantities) * 100.0 / SUM(SUM(Order_quantities)) OVER (PARTITION BY Product_type), 2) AS DemandPercentage
+FROM 
+    supply_chain_data
+GROUP BY 
+    Location, Product_type
+ORDER BY 
+    DemandPercentage DESC, TotalUnitsOrdered DESC;
+```
+
+Analysis: This query calculates the total units ordered and the percentage share of demand for each product type by location, highlighting regions with the highest contribution to product demand.
+
+**Insights:** Focus on high-demand regions to optimize inventory placement and tailor marketing strategies, ensuring better service and reduced logistics costs.
+
+### ** Supplier Performance: Which suppliers consistently meet lead times?**
 **Objective:** Identify reliable suppliers to strengthen partnerships and improve overall supply chain reliability.
 **SQL Query:**
 ```sql
