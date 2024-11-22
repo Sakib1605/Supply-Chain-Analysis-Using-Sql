@@ -1,7 +1,4 @@
-# Healthcare Accessibility Analysis
-Analyzed healthcare accessibility in Toronto using spatial analysis to identify optimal locations for new facilities and improve emergency response. Applied clustering, kernel density estimation (KDE), and Inverse Distance Weighting (IDW) to locate underserved areas. 
-
-# Supply-Chain-Analysis-Using-SQL
+# Supply Chain Analysis Using SQL
 Conducted comprehensive supply chain performance analysis using SQL to evaluate supplier reliability, inventory management, shipping efficiency, and product profitability. Designed and executed complex queries to identify key metrics such as supplier on-time performance, stockout frequency, defect rates, and high-demand regions.
 
 ## Objective
