@@ -13,6 +13,61 @@ The dataset, `supply_chain_data`, was analyzed using SQL queries to address spec
 
 ## Business Questions and Analysis
 
+
+### **8. Product Lifecycle: Which products show declining/increasing demand over time?**
+
+**Objective:** 
+Determine trends in product demand over time to support strategic inventory and production decisions.
+
+**SQL Query:**
+```sql
+WITH MonthlyDemand AS (
+    SELECT 
+        Product_type,
+        DATEPART(YEAR, Order_date) AS OrderYear,
+        DATEPART(MONTH, Order_date) AS OrderMonth,
+        SUM(Order_quantities) AS MonthlyOrders
+    FROM 
+        supply_chain_data
+    GROUP BY 
+        Product_type, DATEPART(YEAR, Order_date), DATEPART(MONTH, Order_date)
+),
+MonthlyDemandWithLag AS (
+    SELECT 
+        Product_type,
+        OrderYear,
+        OrderMonth,
+        MonthlyOrders,
+        LAG(MonthlyOrders) OVER (
+            PARTITION BY Product_type 
+            ORDER BY OrderYear, OrderMonth
+        ) AS PreviousMonthOrders
+    FROM 
+        MonthlyDemand
+)
+SELECT 
+    Product_type,
+    CONCAT(OrderYear, '-', OrderMonth) AS CurrentMonth,
+    MonthlyOrders AS CurrentMonthOrders,
+    PreviousMonthOrders,
+    ROUND((MonthlyOrders - PreviousMonthOrders) * 100.0 / NULLIF(PreviousMonthOrders, 0), 2) AS MoMChangePercentage,
+    CASE 
+        WHEN (MonthlyOrders - PreviousMonthOrders) > 0 THEN 'Increasing Demand'
+        WHEN (MonthlyOrders - PreviousMonthOrders) < 0 THEN 'Declining Demand'
+        ELSE 'No Change'
+    END AS DemandTrend
+FROM 
+    MonthlyDemandWithLag
+WHERE 
+    PreviousMonthOrders IS NOT NULL -- Exclude the first month since it has no previous month
+ORDER BY 
+    Product_type, OrderYear, OrderMonth;
+
+```
+Analysis: This query tracks monthly demand changes and categorizes trends as increasing, declining, or stable, highlighting shifts in market demand.
+
+Insights: Focus on products with increasing demand to scale efforts, address declining demand to mitigate losses, and ensure consistent availability of stable products.
+
 ### **1. Supplier Performance: Which suppliers consistently meet lead times?**
 **Objective:** Identify reliable suppliers to strengthen partnerships and improve overall supply chain reliability.
 **SQL Query:**
