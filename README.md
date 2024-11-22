@@ -13,7 +13,7 @@ The dataset, `supply_chain_data`, was analyzed using SQL queries to address spec
 
 ## Business Questions and Analysis
 
-### **Stockout Analysis: Which products frequently run out of stock?**
+## **1. Stockout Analysis: Which products frequently run out of stock?**
 
 **Objective:** 
 Identify products with frequent stockouts to improve inventory management.
@@ -38,7 +38,7 @@ Analysis: Counts the number of times each product type experiences a stockout an
 
 Insights: Focus on maintaining adequate inventory for frequently out-of-stock products to prevent disruptions and lost sales.
 
-### **Product Demand: Which products show declining/increasing demand over time?**
+## **2. Product Demand: Which products show declining/increasing demand over time?**
 
 **Objective:** 
 Determine trends in product demand over time to support strategic inventory and production decisions.
@@ -93,7 +93,7 @@ ORDER BY
 **Insights:** Focus on products with increasing demand to scale efforts, address declining demand to mitigate losses, and ensure consistent availability of stable products.
 
 
-### **Profitability Analysis: Which products have the highest revenue but low profit margins?**
+## **3. Profitability Analysis: Which products have the highest revenue but low profit margins?**
 
 **Objective:** 
 Identify high-revenue products with low profit margins to improve pricing strategies and cost management.
@@ -119,7 +119,7 @@ Analysis: This query calculates total revenue, total costs, and profit margins f
 **Insights:** High-revenue, low-margin products indicate potential areas for cost optimization, pricing adjustments, or process improvement to enhance profitability.
 
 
-### **High Demand Regions: Which locations consistently order high volumes of products?**
+## **4. High Demand Regions: Which locations consistently order high volumes of products?**
 
 **Objective:** 
 Identify regions with high demand for specific products to prioritize inventory distribution and marketing efforts.
@@ -143,7 +143,7 @@ Analysis: This query calculates the total units ordered and the percentage share
 
 **Insights:** Focus on high-demand regions to optimize inventory placement and tailor marketing strategies, ensuring better service and reduced logistics costs.
 
-### **Shipping Delays: Which products experience frequent shipping delays and at what cost?**
+## **5. Shipping Delays: Which products experience frequent shipping delays and at what cost?**
 
 **Objective:** 
 Identify products with frequent shipping delays and quantify their associated costs.
@@ -170,7 +170,7 @@ Insights: Focus on products with high delay rates and costs to optimize shipping
 
 
 
-### **Supplier Concentration Risk: Which products depend heavily on a single supplier??**
+## **6. Supplier Concentration Risk: Which products depend heavily on a single supplier??**
 **Objective:** Evaluate products with high dependency on a single supplier to mitigate supply chain risks.
 **SQL Query:**
 ```sql
@@ -194,7 +194,7 @@ Insights: Reduce risks by diversifying suppliers for products heavily reliant on
 
 
 
-### **Inventory Turnover Analysis: Which products have the highest turnover rates by location?**
+## **7. Inventory Turnover Analysis: Which products have the highest turnover rates by location?**
 **Objective:** Identify products with high turnover rates to optimize stock management by location.
 **SQL Query:**
 ```sql
@@ -233,7 +233,7 @@ Insights: High-turnover products indicate strong demand, necessitating adequate 
 
 
 
-### **Cost-Efficiency by Supplier: Which suppliers have the lowest shipping and manufacturing costs per product?**
+## **8. Cost-Efficiency by Supplier: Which suppliers have the lowest shipping and manufacturing costs per product?**
 **Objective:** Identify cost-efficient suppliers to optimize procurement strategies.
 **SQL Query:**
 ```sql
@@ -291,7 +291,7 @@ Insights: Work with top-ranked suppliers to reduce costs and maximize profit mar
 
 
 
-### **High-Risk Products: Which products have low profitability and high defect rates?**
+## **9. High-Risk Products: Which products have low profitability and high defect rates?**
 **Objective:** Identify products with high defect rates and low profitability for improvement.
 **SQL Query:**
 ```sql
@@ -327,7 +327,7 @@ Analysis: Ranks products based on defect rates and profitability to identify hig
 Insights: Address high-defect, low-profit products to improve quality and profitability.
 
 
-### **Regional Shipping Efficiency: Which regions have the most delays and highest shipping costs?**
+## **10. Regional Shipping Efficiency: Which regions have the most delays and highest shipping costs?**
 **Objective:** Evaluate regional shipping performance to optimize costs and reduce delays.
 **SQL Query:**
 ```sql
@@ -349,7 +349,7 @@ Analysis: Calculates average shipping times, delays, and costs for each location
 
 Insights: Focus on improving shipping efficiency in high-cost regions to reduce delays and costs.
 
-### **Product Reorder Cycles: What is the average reorder frequency for each product?**
+## **11. Product Reorder Cycles: What is the average reorder frequency for each product?**
 **Objective:** Determine reorder cycles for products to streamline inventory planning.
 **SQL Query:**
 ```sql
@@ -371,7 +371,7 @@ Analysis: Calculates average lead times for product reordering and evaluates sto
 Insights: Align reorder schedules with demand to ensure optimal inventory levels.
 
 
-### **Defect Analysis: Which suppliers contribute to the highest defect rates?**
+## **12. Defect Analysis: Which suppliers contribute to the highest defect rates?**
 
 **Objective:** 
 Determine which suppliers and products are associated with high defect rates to improve quality control.
@@ -398,7 +398,7 @@ Analysis: Calculates the defect rate for each supplier and product type by analy
 Insights: High-defect suppliers and products should be targeted for quality improvement initiatives or alternative sourcing.
 
 
-### **Supplier Performance: Which suppliers consistently meet lead times?**
+## **13. Supplier Performance: Which suppliers consistently meet lead times?**
 
 **Objective:** 
 Evaluate supplier reliability based on their adherence to promised lead times.
