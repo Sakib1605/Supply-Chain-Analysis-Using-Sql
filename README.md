@@ -1,5 +1,5 @@
 # Supply Chain Analysis Using SQL
-Conducted comprehensive supply chain performance analysis using SQL to evaluate supplier reliability, inventory management, shipping efficiency, and product profitability. Designed and executed complex queries to identify key metrics such as supplier on-time performance, stockout frequency, defect rates, and high-demand regions.
+
 
 ## Objective
 The purpose of this analysis is to identify trends, inefficiencies, and areas of improvement in the supply chain. By leveraging SQL queries, we examine key aspects such as supplier reliability, stock levels, manufacturing costs, shipping efficiency, and product performance. The ultimate goal is to provide actionable insights to enhance overall supply chain efficiency, reduce costs, and support strategic decision-making.
